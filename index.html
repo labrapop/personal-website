@@ -1,0 +1,2276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Md Labib Hossen - Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #1a1a2e;
+            --secondary: #16213e;
+            --accent: #0f3460;
+            --highlight: #e94560;
+            --gold: #f0a500;
+            --text: #e0e0e0;
+            --text-dim: #a0a0a0;
+            --card-bg: rgba(255,255,255,0.05);
+            --border: rgba(255,255,255,0.1);
+            --gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --gradient2: linear-gradient(135deg, #e94560, #f0a500);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--primary);
+            color: var(--text);
+            overflow-x: hidden;
+        }
+
+        /* Particles Background */
+        #particles {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .particle {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: rgba(233, 69, 96, 0.6);
+            border-radius: 50%;
+            animation: float linear infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(-10vh) rotate(720deg); opacity: 0; }
+        }
+
+        /* Navbar */
+        nav {
+            position: fixed;
+            top: 0; width: 100%;
+            background: rgba(26,26,46,0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+            padding: 0 2rem;
+        }
+
+        .nav-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+
+        .logo {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 900;
+            background: var(--gradient2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dim);
+            font-size: 0.85rem;
+            font-weight: 500;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px; left: 0;
+            width: 0; height: 2px;
+            background: var(--highlight);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover { color: var(--highlight); }
+        .nav-links a:hover::after { width: 100%; }
+
+        .nav-admin-btn {
+            background: var(--gradient2);
+            border: none;
+            color: white;
+            padding: 8px 18px;
+            border-radius: 25px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            letter-spacing: 0.5px;
+        }
+
+        .nav-admin-btn:hover { transform: scale(1.05); box-shadow: 0 0 20px rgba(233,69,96,0.5); }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            padding: 5px;
+        }
+
+        .hamburger span {
+            width: 25px; height: 2px;
+            background: var(--text);
+            transition: all 0.3s;
+            display: block;
+        }
+
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 70px; left: 0;
+            width: 100%;
+            background: rgba(26,26,46,0.98);
+            padding: 2rem;
+            z-index: 999;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .mobile-menu.open { display: block; }
+
+        .mobile-menu ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .mobile-menu a {
+            text-decoration: none;
+            color: var(--text);
+            font-size: 1rem;
+            font-weight: 500;
+            display: block;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        /* Hero Section */
+        #home {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+            padding: 100px 2rem 2rem;
+        }
+
+        .hero-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-text h4 {
+            color: var(--highlight);
+            font-size: 0.9rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+
+        .hero-text h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: clamp(2rem, 4vw, 3.5rem);
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+        }
+
+        .hero-text h1 span {
+            background: var(--gradient2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-text .tagline {
+            font-size: 1.1rem;
+            color: var(--text-dim);
+            margin-bottom: 1.5rem;
+            font-weight: 400;
+        }
+
+        .hero-text .bio {
+            font-size: 0.9rem;
+            color: var(--text-dim);
+            line-height: 1.8;
+            margin-bottom: 2rem;
+        }
+
+        .hero-btns {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: var(--gradient2);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+            display: inline-block;
+        }
+
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(233,69,96,0.4); }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--text);
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+            border: 1px solid var(--border);
+            display: inline-block;
+        }
+
+        .btn-secondary:hover { border-color: var(--highlight); color: var(--highlight); transform: translateY(-2px); }
+
+        .hero-image-wrap {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .hero-photo-container {
+            position: relative;
+            width: 320px;
+            height: 380px;
+        }
+
+        .hero-photo-ring {
+            position: absolute;
+            inset: -15px;
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            border: 2px solid transparent;
+            background: var(--gradient2) border-box;
+            -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: destination-out;
+            mask-composite: exclude;
+            animation: spin 8s linear infinite;
+        }
+
+        @keyframes spin { to { transform: rotate(360deg); } }
+
+        .hero-photo {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            border: 4px solid var(--accent);
+            box-shadow: 0 0 60px rgba(233,69,96,0.3), 0 0 120px rgba(233,69,96,0.1);
+            display: block;
+        }
+
+        .photo-placeholder {
+            width: 100%;
+            height: 100%;
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            border: 4px solid var(--accent);
+            box-shadow: 0 0 60px rgba(233,69,96,0.3);
+            background: linear-gradient(145deg, #1a1a2e, #0f3460);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-dim);
+            font-size: 4rem;
+        }
+
+        .hero-badges {
+            position: absolute;
+            bottom: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .badge {
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: var(--gold);
+            white-space: nowrap;
+        }
+
+        /* Section Styles */
+        section {
+            position: relative;
+            z-index: 1;
+            padding: 80px 2rem;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-header h2 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: clamp(1.8rem, 3vw, 2.5rem);
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .section-header h2 span {
+            background: var(--gradient2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section-header p {
+            color: var(--text-dim);
+            font-size: 0.9rem;
+        }
+
+        .section-divider {
+            width: 60px;
+            height: 3px;
+            background: var(--gradient2);
+            margin: 1rem auto;
+            border-radius: 3px;
+        }
+
+        .container { max-width: 1200px; margin: 0 auto; }
+
+        /* About Section */
+        #about { background: rgba(255,255,255,0.02); }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-info-cards {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .info-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1rem;
+            transition: all 0.3s;
+        }
+
+        .info-card:hover { border-color: var(--highlight); transform: translateY(-3px); }
+
+        .info-card .label {
+            font-size: 0.7rem;
+            color: var(--text-dim);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.3rem;
+        }
+
+        .info-card .value {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        .info-card i {
+            color: var(--highlight);
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        .about-text p {
+            color: var(--text-dim);
+            line-height: 1.9;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .about-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .stat-box {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.5rem 1rem;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .stat-box:hover { border-color: var(--gold); transform: translateY(-3px); }
+
+        .stat-box .num {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2rem;
+            font-weight: 900;
+            background: var(--gradient2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .stat-box .label {
+            font-size: 0.75rem;
+            color: var(--text-dim);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 0.3rem;
+        }
+
+        /* Skills Section */
+        #skills { }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-category {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 2rem;
+            transition: all 0.3s;
+        }
+
+        .skill-category:hover { border-color: var(--highlight); box-shadow: 0 10px 40px rgba(233,69,96,0.1); }
+
+        .skill-category h3 {
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .skill-category h3 i { color: var(--highlight); }
+
+        .skill-item {
+            margin-bottom: 1.2rem;
+        }
+
+        .skill-info {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.4rem;
+            font-size: 0.85rem;
+        }
+
+        .skill-name { font-weight: 500; }
+        .skill-percent { color: var(--highlight); font-weight: 600; }
+
+        .skill-bar {
+            height: 6px;
+            background: rgba(255,255,255,0.08);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .skill-fill {
+            height: 100%;
+            background: var(--gradient2);
+            border-radius: 10px;
+            width: 0;
+            transition: width 1.5s ease;
+        }
+
+        .tech-icons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            margin-top: 1rem;
+        }
+
+        .tech-icon {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 0.8rem 1.2rem;
+            font-size: 0.8rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s;
+            cursor: default;
+        }
+
+        .tech-icon:hover { border-color: var(--highlight); background: rgba(233,69,96,0.1); transform: translateY(-2px); }
+        .tech-icon i { font-size: 1.2rem; }
+
+        /* Education Section */
+        #education { background: rgba(255,255,255,0.02); }
+
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0; bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--highlight), var(--gold));
+            transform: translateX(-50%);
+        }
+
+        .timeline-item {
+            display: flex;
+            justify-content: flex-end;
+            padding-right: calc(50% + 2rem);
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .timeline-item:nth-child(even) {
+            justify-content: flex-start;
+            padding-right: 0;
+            padding-left: calc(50% + 2rem);
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: 50%;
+            top: 1.5rem;
+            width: 16px; height: 16px;
+            background: var(--highlight);
+            border-radius: 50%;
+            transform: translateX(-50%);
+            box-shadow: 0 0 15px rgba(233,69,96,0.6);
+            z-index: 2;
+        }
+
+        .timeline-content {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 1.5rem;
+            max-width: 300px;
+            transition: all 0.3s;
+        }
+
+        .timeline-content:hover { border-color: var(--highlight); transform: scale(1.02); }
+
+        .timeline-content .year {
+            font-size: 0.75rem;
+            color: var(--highlight);
+            font-weight: 600;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-content h3 {
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 0.3rem;
+        }
+
+        .timeline-content p {
+            font-size: 0.8rem;
+            color: var(--text-dim);
+        }
+
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .project-card:hover { border-color: var(--highlight); transform: translateY(-5px); box-shadow: 0 20px 60px rgba(0,0,0,0.3); }
+
+        .project-img {
+            height: 160px;
+            background: linear-gradient(135deg, var(--accent), var(--primary));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-img::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: var(--gradient2);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .project-card:hover .project-img::after { opacity: 0.3; }
+
+        .project-info { padding: 1.5rem; }
+
+        .project-info h3 {
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-info p {
+            font-size: 0.8rem;
+            color: var(--text-dim);
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+        }
+
+        .tag {
+            background: rgba(233,69,96,0.15);
+            border: 1px solid rgba(233,69,96,0.3);
+            color: var(--highlight);
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: 600;
+        }
+
+        /* Contact Section */
+        #contact { background: rgba(255,255,255,0.02); }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 4rem;
+        }
+
+        .contact-info h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .contact-info p {
+            color: var(--text-dim);
+            font-size: 0.9rem;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.2rem;
+            padding: 1rem;
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            transition: all 0.3s;
+        }
+
+        .contact-item:hover { border-color: var(--highlight); }
+
+        .contact-item i {
+            color: var(--highlight);
+            font-size: 1.2rem;
+            width: 20px;
+            text-align: center;
+        }
+
+        .contact-item .detail {
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        .contact-form {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 2rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--text-dim);
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 12px 16px;
+            color: var(--text);
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.85rem;
+            transition: all 0.3s;
+            outline: none;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-color: var(--highlight);
+            background: rgba(233,69,96,0.05);
+            box-shadow: 0 0 15px rgba(233,69,96,0.1);
+        }
+
+        .form-group textarea { resize: vertical; min-height: 120px; }
+
+        .form-submit {
+            width: 100%;
+            background: var(--gradient2);
+            color: white;
+            border: none;
+            padding: 14px;
+            border-radius: 10px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            letter-spacing: 1px;
+        }
+
+        .form-submit:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(233,69,96,0.4); }
+        .form-submit:active { transform: translateY(0); }
+
+        .form-message {
+            margin-top: 1rem;
+            padding: 10px;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 0.85rem;
+            font-weight: 500;
+            display: none;
+        }
+
+        .form-message.success { background: rgba(46,213,115,0.15); border: 1px solid rgba(46,213,115,0.4); color: #2ed573; display: block; }
+        .form-message.error { background: rgba(233,69,96,0.15); border: 1px solid rgba(233,69,96,0.4); color: var(--highlight); display: block; }
+
+        /* Social Links */
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .social-link {
+            width: 45px; height: 45px;
+            border: 1px solid var(--border);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-dim);
+            text-decoration: none;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+
+        .social-link:hover { border-color: var(--highlight); color: var(--highlight); background: rgba(233,69,96,0.1); transform: translateY(-3px); }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2rem;
+            border-top: 1px solid var(--border);
+            color: var(--text-dim);
+            font-size: 0.8rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        footer span { color: var(--highlight); }
+
+        /* ===== ADMIN PANEL ===== */
+        .admin-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.85);
+            z-index: 9998;
+            display: none;
+            backdrop-filter: blur(10px);
+        }
+
+        .admin-overlay.open { display: flex; align-items: center; justify-content: center; }
+
+        .admin-modal {
+            background: #0f0f1a;
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            width: 90%;
+            max-width: 900px;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            box-shadow: 0 40px 100px rgba(0,0,0,0.8);
+        }
+
+        .admin-header {
+            background: linear-gradient(135deg, #1a1a2e, #0f3460);
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            border-radius: 20px 20px 0 0;
+        }
+
+        .admin-header h2 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.1rem;
+            background: var(--gradient2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .admin-close {
+            background: rgba(233,69,96,0.2);
+            border: 1px solid var(--highlight);
+            color: var(--highlight);
+            width: 35px; height: 35px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+
+        .admin-close:hover { background: var(--highlight); color: white; }
+
+        /* Admin Login */
+        .admin-login {
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .admin-login h3 { font-size: 1.3rem; margin-bottom: 0.5rem; }
+        .admin-login p { color: var(--text-dim); font-size: 0.85rem; margin-bottom: 2rem; }
+
+        .login-form {
+            max-width: 350px;
+            margin: 0 auto;
+        }
+
+        .login-form .form-group input {
+            text-align: center;
+        }
+
+        .login-btn {
+            width: 100%;
+            background: var(--gradient2);
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 10px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-top: 0.5rem;
+        }
+
+        .login-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(233,69,96,0.4); }
+
+        .login-error {
+            color: var(--highlight);
+            font-size: 0.8rem;
+            margin-top: 0.8rem;
+            display: none;
+        }
+
+        /* Admin Dashboard */
+        .admin-dashboard { display: none; padding: 2rem; }
+        .admin-dashboard.active { display: block; }
+
+        .admin-tabs {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .admin-tab {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            color: var(--text-dim);
+            padding: 8px 18px;
+            border-radius: 25px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .admin-tab.active, .admin-tab:hover {
+            background: var(--highlight);
+            border-color: var(--highlight);
+            color: white;
+        }
+
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+
+        .admin-section-title {
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: var(--gold);
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 0.5rem;
+        }
+
+        .admin-field {
+            margin-bottom: 1.2rem;
+        }
+
+        .admin-field label {
+            display: block;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--text-dim);
+            margin-bottom: 0.4rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .admin-field input,
+        .admin-field textarea,
+        .admin-field select {
+            width: 100%;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 10px 14px;
+            color: var(--text);
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.85rem;
+            outline: none;
+            transition: all 0.3s;
+        }
+
+        .admin-field input:focus,
+        .admin-field textarea:focus {
+            border-color: var(--highlight);
+        }
+
+        .admin-field textarea { resize: vertical; min-height: 80px; }
+
+        .admin-grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .photo-upload-area {
+            border: 2px dashed var(--border);
+            border-radius: 12px;
+            padding: 2rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .photo-upload-area:hover { border-color: var(--highlight); background: rgba(233,69,96,0.05); }
+
+        .photo-upload-area input[type="file"] {
+            position: absolute;
+            inset: 0;
+            opacity: 0;
+            cursor: pointer;
+        }
+
+        .photo-preview {
+            width: 100px; height: 120px;
+            object-fit: cover;
+            border-radius: 10px;
+            border: 2px solid var(--border);
+            margin: 0 auto 1rem;
+            display: block;
+        }
+
+        .photo-upload-area i { font-size: 2rem; color: var(--text-dim); margin-bottom: 0.5rem; display: block; }
+        .photo-upload-area p { font-size: 0.8rem; color: var(--text-dim); }
+
+        .save-btn {
+            background: var(--gradient2);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 10px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-top: 1rem;
+        }
+
+        .save-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(233,69,96,0.4); }
+
+        .save-success {
+            background: rgba(46,213,115,0.15);
+            border: 1px solid rgba(46,213,115,0.4);
+            color: #2ed573;
+            padding: 10px;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin-top: 1rem;
+            display: none;
+        }
+
+        .skill-admin-item {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin-bottom: 0.8rem;
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 0.8rem;
+        }
+
+        .skill-admin-item input[type="text"] {
+            flex: 1;
+            background: transparent;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            padding: 6px 10px;
+            color: var(--text);
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.8rem;
+            outline: none;
+        }
+
+        .skill-admin-item input[type="range"] {
+            flex: 2;
+            accent-color: var(--highlight);
+        }
+
+        .skill-admin-item .pct {
+            font-size: 0.8rem;
+            color: var(--highlight);
+            font-weight: 600;
+            min-width: 35px;
+        }
+
+        .del-btn {
+            background: rgba(233,69,96,0.2);
+            border: 1px solid var(--highlight);
+            color: var(--highlight);
+            width: 28px; height: 28px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 0.7rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            transition: all 0.3s;
+        }
+
+        .del-btn:hover { background: var(--highlight); color: white; }
+
+        .add-btn {
+            background: rgba(240,165,0,0.15);
+            border: 1px dashed var(--gold);
+            color: var(--gold);
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .add-btn:hover { background: rgba(240,165,0,0.25); }
+
+        .logout-btn {
+            background: transparent;
+            border: 1px solid var(--border);
+            color: var(--text-dim);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .logout-btn:hover { border-color: var(--highlight); color: var(--highlight); }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: var(--primary); }
+        ::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 3px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--highlight); }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .hamburger { display: flex; }
+            .hero-inner { grid-template-columns: 1fr; text-align: center; gap: 2rem; }
+            .hero-image-wrap { order: -1; }
+            .hero-photo-container { width: 220px; height: 260px; }
+            .hero-btns { justify-content: center; }
+            .about-grid { grid-template-columns: 1fr; gap: 2rem; }
+            .about-stats { grid-template-columns: repeat(3, 1fr); }
+            .contact-grid { grid-template-columns: 1fr; gap: 2rem; }
+            .timeline::before { left: 20px; }
+            .timeline-item { padding-right: 0; padding-left: 50px; justify-content: flex-start; }
+            .timeline-item:nth-child(even) { padding-left: 50px; }
+            .timeline-dot { left: 20px; }
+            .timeline-content { max-width: 100%; }
+            .admin-grid-2 { grid-template-columns: 1fr; }
+            .admin-modal { margin: 1rem; width: calc(100% - 2rem); }
+        }
+
+        @media (max-width: 480px) {
+            .about-info-cards { grid-template-columns: 1fr; }
+            .about-stats { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .fade-in { animation: fadeInUp 0.6s ease forwards; }
+
+        .typing-cursor {
+            display: inline-block;
+            width: 3px;
+            height: 1em;
+            background: var(--highlight);
+            margin-left: 2px;
+            vertical-align: middle;
+            animation: blink 0.7s step-end infinite;
+        }
+
+        @keyframes blink { 50% { opacity: 0; } }
+
+        /* Glow effects */
+        .glow-text {
+            text-shadow: 0 0 30px rgba(233,69,96,0.5);
+        }
+    </style>
+</head>
+<body>
+
+<!-- Particles -->
+<div id="particles"></div>
+
+<!-- Navbar -->
+<nav>
+    <div class="nav-inner">
+        <div class="logo">Md Labib Hossen</div>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#education">Education</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <div style="display:flex;align-items:center;gap:1rem;">
+            <button class="nav-admin-btn" onclick="openAdmin()">⚙ Admin</button>
+            <div class="hamburger" onclick="toggleMobile()" id="hamburger">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<!-- Mobile Menu -->
+<div class="mobile-menu" id="mobileMenu">
+    <ul>
+        <li><a href="#home" onclick="closeMobile()">Home</a></li>
+        <li><a href="#about" onclick="closeMobile()">About</a></li>
+        <li><a href="#skills" onclick="closeMobile()">Skills</a></li>
+        <li><a href="#education" onclick="closeMobile()">Education</a></li>
+        <li><a href="#projects" onclick="closeMobile()">Projects</a></li>
+        <li><a href="#contact" onclick="closeMobile()">Contact</a></li>
+        <li><a href="#" onclick="closeMobile();openAdmin()">⚙ Admin Panel</a></li>
+    </ul>
+</div>
+
+<!-- HERO -->
+<section id="home">
+    <div class="hero-inner container">
+        <div class="hero-text fade-in">
+            <h4>Hello, World! 👋</h4>
+            <h1>
+                I'm <span id="hero-name">Md Labib Hossen</span>
+            </h1>
+            <div class="tagline">
+                <span id="typed-text"></span><span class="typing-cursor"></span>
+            </div>
+            <p class="bio" id="hero-bio">
+                A passionate student and developer from Bangladesh 🇧🇩. Currently studying at Rajbari Govt College, I love building things on the web and creating stunning designs. Always learning, always growing.
+            </p>
+            <div class="hero-btns">
+                <a href="#about" class="btn-primary">Know More About Me</a>
+                <a href="#contact" class="btn-secondary">Contact Me</a>
+            </div>
+        </div>
+        <div class="hero-image-wrap">
+            <div class="hero-photo-container">
+                <div class="hero-photo-ring"></div>
+                <img id="hero-photo" src="" alt="Md Labib Hossen" class="hero-photo" style="display:none;" />
+                <div class="photo-placeholder" id="hero-placeholder">
+                    <i class="fas fa-user"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+    <div class="container">
+        <div class="section-header">
+            <h2>About <span>Me</span></h2>
+            <div class="section-divider"></div>
+            <p>Get to know me better</p>
+        </div>
+        <div class="about-grid">
+            <div>
+                <div class="about-info-cards">
+                    <div class="info-card">
+                        <i class="fas fa-user"></i>
+                        <div class="label">Full Name</div>
+                        <div class="value" id="about-name">Md Labib Hossen</div>
+                    </div>
+                    <div class="info-card">
+                        <i class="fas fa-calendar"></i>
+                        <div class="label">Class</div>
+                        <div class="value" id="about-class">Class 11th (HSC)</div>
+                    </div>
+                    <div class="info-card">
+                        <i class="fas fa-school"></i>
+                        <div class="label">College</div>
+                        <div class="value" id="about-college">Rajbari Govt College</div>
+                    </div>
+                    <div class="info-card">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div class="label">Location</div>
+                        <div class="value" id="about-location">Rajbari, Dhaka, Bangladesh</div>
+                    </div>
+                    <div class="info-card">
+                        <i class="fas fa-envelope"></i>
+                        <div class="label">Email</div>
+                        <div class="value" id="about-email">labibhossen@example.com</div>
+                    </div>
+                    <div class="info-card">
+                        <i class="fas fa-briefcase"></i>
+                        <div class="label">Status</div>
+                        <div class="value" id="about-status">Student & Developer</div>
+                    </div>
+                </div>
+            </div>
+            <div class="about-text">
+                <h3 style="font-size:1.5rem;font-weight:700;margin-bottom:1rem;">Who am I? <span style="font-size:1rem;color:var(--text-dim);font-weight:400;">— A brief intro</span></h3>
+                <p id="about-para1">I am <strong style="color:var(--text)">Md Labib Hossen</strong>, a dedicated student currently pursuing my HSC at Rajbari Govt College, located in Rajbari, Dhaka, Bangladesh. I have a strong passion for technology and creative design.</p>
+                <p id="about-para2">As a self-taught developer, I work with <strong style="color:var(--text)">Java, HTML, and CSS</strong> to build web projects and applications. I also have expertise in <strong style="color:var(--text)">Photoshop Poster Design</strong>, creating eye-catching visual content.</p>
+                <p id="about-para3">I believe in continuous learning and pushing boundaries. My goal is to become a full-stack developer and contribute meaningful projects to the tech community. 🚀</p>
+                <div class="about-stats">
+                    <div class="stat-box">
+                        <div class="num" id="stat1">3+</div>
+                        <div class="label">Skills</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="num" id="stat2">5+</div>
+                        <div class="label">Projects</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="num" id="stat3">2+</div>
+                        <div class="label">Years Exp.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+    <div class="container">
+        <div class="section-header">
+            <h2>My <span>Skills</span></h2>
+            <div class="section-divider"></div>
+            <p>Technologies & tools I work with</p>
+        </div>
+        <div class="skills-grid">
+            <div class="skill-category">
+                <h3><i class="fas fa-code"></i> Programming Languages</h3>
+                <div id="prog-skills">
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <span class="skill-name">Java</span>
+                            <span class="skill-percent">75%</span>
+                        </div>
+                        <div class="skill-bar"><div class="skill-fill" data-width="75"></div></div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <span class="skill-name">HTML5</span>
+                            <span class="skill-percent">90%</span>
+                        </div>
+                        <div class="skill-bar"><div class="skill-fill" data-width="90"></div></div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <span class="skill-name">CSS</span>
+                            <span class="skill-percent">85%</span>
+                        </div>
+                        <div class="skill-bar"><div class="skill-fill" data-width="85"></div></div>
+                    </div>
+                </div>
+            </div>
+            <div class="skill-category">
+                <h3><i class="fas fa-paint-brush"></i> Design Skills</h3>
+                <div id="design-skills">
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <span class="skill-name">Photoshop</span>
+                            <span class="skill-percent">80%</span>
+                        </div>
+                        <div class="skill-bar"><div class="skill-fill" data-width="80"></div></div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <span class="skill-name">Poster Design</span>
+                            <span class="skill-percent">85%</span>
+                        </div>
+                        <div class="skill-bar"><div class="skill-fill" data-width="85"></div></div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <span class="skill-name">UI/UX Basics</span>
+                            <span class="skill-percent">65%</span>
+                        </div>
+                        <div class="skill-bar"><div class="skill-fill" data-width="65"></div></div>
+                    </div>
+                </div>
+            </div>
+            <div class="skill-category">
+                <h3><i class="fas fa-tools"></i> Tools & Technologies</h3>
+                <div class="tech-icons">
+                    <div class="tech-icon"><i class="fab fa-java" style="color:#f89820"></i> Java</div>
+                    <div class="tech-icon"><i class="fab fa-html5" style="color:#e44d26"></i> HTML5</div>
+                    <div class="tech-icon"><i class="fab fa-css3-alt" style="color:#264de4"></i> CSS3</div>
+                    <div class="tech-icon"><i class="fas fa-image" style="color:#31a8ff"></i> Photoshop</div>
+                    <div class="tech-icon"><i class="fab fa-github" style="color:#fff"></i> GitHub</div>
+                    <div class="tech-icon"><i class="fas fa-terminal" style="color:#4ec9b0"></i> VS Code</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+    <div class="container">
+        <div class="section-header">
+            <h2>My <span>Education</span></h2>
+            <div class="section-divider"></div>
+            <p>My academic journey</p>
+        </div>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="year">2026 - Present</div>
+                    <h3>Higher Secondary (HSC)</h3>
+                    <p><i class="fas fa-university" style="color:var(--highlight);margin-right:5px"></i>Rajbari Govt College</p>
+                    <p style="margin-top:0.5rem;">Rajbari, Dhaka, Bangladesh | Class 11th</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="year">2024 - 2025</div>
+                    <h3>Secondary (SSC)</h3>
+                    <p><i class="fas fa-school" style="color:var(--highlight);margin-right:5px"></i>Rajbari Govt High School</p>
+                    <p style="margin-top:0.5rem;">Rajbari, Dhaka, Bangladesh</p>
+                </div>
+            </div>
+                        </div>
+        </div>
+    </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+    <div class="container">
+        <div class="section-header">
+            <h2>My <span>Projects</span></h2>
+            <div class="section-divider"></div>
+            <p>Things I've built</p>
+        </div>
+        <div class="projects-grid" id="projects-grid">
+            <div class="project-card">
+                <div class="project-img">🌐</div>
+                <div class="project-info">
+                    <h3>Personal Portfolio Website</h3>
+                    <p>A fully responsive personal portfolio website built with HTML, CSS and JavaScript showcasing my skills and projects.</p>
+                    <div class="project-tags">
+                        <span class="tag">HTML</span>
+                        <span class="tag">CSS</span>
+                        <span class="tag">JavaScript</span>
+                    </div>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-img">🎨</div>
+                <div class="project-info">
+                    <h3>Poster Design Collection</h3>
+                    <p>A series of creative poster designs created using Adobe Photoshop for various events and social media.</p>
+                    <div class="project-tags">
+                        <span class="tag">Photoshop</span>
+                        <span class="tag">Design</span>
+                    </div>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-img">☕</div>
+                <div class="project-info">
+                    <h3>Java Console Application</h3>
+                    <p>A simple Java-based console application for student management with data handling and OOP principles.</p>
+                    <div class="project-tags">
+                        <span class="tag">Java</span>
+                        <span class="tag">OOP</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+    <div class="container">
+        <div class="section-header">
+            <h2>Contact <span>Me</span></h2>
+            <div class="section-divider"></div>
+            <p>Let's connect and collaborate!</p>
+        </div>
+        <div class="contact-grid">
+            <div class="contact-info">
+                <h3>Get In Touch 📬</h3>
+                <p>Feel free to reach out for collaborations, projects, or just a friendly chat about tech and design!</p>
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <div>
+                        <div class="label" style="font-size:0.7rem;color:var(--text-dim);text-transform:uppercase;letter-spacing:1px;">Location</div>
+                        <div class="detail" id="contact-location">Rajbari, Dhaka, Bangladesh</div>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <div>
+                        <div class="label" style="font-size:0.7rem;color:var(--text-dim);text-transform:uppercase;letter-spacing:1px;">Email</div>
+                        <div class="detail" id="contact-email">labibf390@gmail.com</div>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-phone"></i>
+                    <div>
+                        <div class="label" style="font-size:0.7rem;color:var(--text-dim);text-transform:uppercase;letter-spacing:1px;">Phone</div>
+                        <div class="detail" id="contact-phone">+8801714149489</div>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <i class="fab fa-facebook"></i>
+                    <div>
+                        <div class="label" style="font-size:0.7rem;color:var(--text-dim);text-transform:uppercase;letter-spacing:1px;">Facebook</div>
+                        <div class="detail" id="contact-facebook">Md Labib</div>
+                    </div>
+                </div>
+                <div class="social-links">
+		    <a href="https://www.facebook.com/md.labib.hossen.007" class="social-link" id="fb-link"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/md.labib.hossen.007/" class="social-link"><i class="fab fa-instagram"></i></a>
+                    <a href="https://discord.com/users/1194306436696657980" class="social-link"><i class="fab fa-discord"></i></a>
+                </div>
+            </div>
+            <div class="contact-form">
+                <h3 style="font-size:1.1rem;font-weight:700;margin-bottom:1.5rem;">Send a Message</h3>
+                <div class="form-group">
+                    <label>Your Name</label>
+                    <input type="text" id="c-name" placeholder="Enter your name">
+                </div>
+                <div class="form-group">
+                    <label>Your Email</label>
+                    <input type="email" id="c-email" placeholder="Enter your email">
+                </div>
+                <div class="form-group">
+                    <label>Subject</label>
+                    <input type="text" id="c-subject" placeholder="What's this about?">
+                </div>
+                <div class="form-group">
+                    <label>Message</label>
+                    <textarea id="c-message" placeholder="Write your message here..."></textarea>
+                </div>
+                <button class="form-submit" onclick="sendMessage()">Send Message <i class="fas fa-paper-plane"></i></button>
+                <div class="form-message" id="contact-msg"></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <p>Made with <span>❤</span> by <span>Md Labib Hossen</span> | © 2026 All Rights Reserved</p>
+    <p style="margin-top:0.5rem;font-size:0.7rem;">Student & Developer from Bangladesh 🇧🇩</p>
+</footer>
+
+<!-- ADMIN OVERLAY -->
+<div class="admin-overlay" id="adminOverlay" onclick="closeAdminOnBg(event)">
+    <div class="admin-modal" id="adminModal">
+        <div class="admin-header">
+            <h2>⚙ Admin Control Panel</h2>
+            <div style="display:flex;align-items:center;gap:0.8rem;">
+                <button class="logout-btn" id="logoutBtn" onclick="logout()" style="display:none;">Logout</button>
+                <button class="admin-close" onclick="closeAdmin()">✕</button>
+            </div>
+        </div>
+
+        <!-- LOGIN -->
+        <div class="admin-login" id="adminLogin">
+            <div style="font-size:3rem;margin-bottom:1rem;">🔐</div>
+            <h3>Admin Login</h3>
+            <p>Enter your credentials to access the admin panel</p>
+            <div class="login-form">
+                <div class="form-group">
+                    <label>Username</label>
+                    <input type="text" id="admin-user" placeholder="Username" onkeydown="if(event.key==='Enter')loginAdmin()">
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" id="admin-pass" placeholder="Password" onkeydown="if(event.key==='Enter')loginAdmin()">
+                </div>
+                <button class="login-btn" onclick="loginAdmin()">Login to Panel</button>
+                <p class="login-error" id="loginError">❌ Wrong username or password!</p>
+                <p style="font-size:0.7rem;color:var(--text-dim);margin-top:1rem;">Enter Your Username & Password for Login !</p>
+            </div>
+        </div>
+
+        <!-- DASHBOARD -->
+        <div class="admin-dashboard" id="adminDashboard">
+            <div class="admin-tabs">
+                <button class="admin-tab active" onclick="switchTab('tab-profile', this)">👤 Profile</button>
+                <button class="admin-tab" onclick="switchTab('tab-photo', this)">📷 Photo</button>
+                <button class="admin-tab" onclick="switchTab('tab-about', this)">📝 About</button>
+                <button class="admin-tab" onclick="switchTab('tab-skills', this)">💻 Skills</button>
+                <button class="admin-tab" onclick="switchTab('tab-contact', this)">📬 Contact</button>
+                <button class="admin-tab" onclick="switchTab('tab-projects', this)">🚀 Projects</button>
+            </div>
+
+            <!-- PROFILE TAB -->
+            <div class="tab-content active" id="tab-profile">
+                <div class="admin-section-title">Basic Profile Information</div>
+                <div class="admin-grid-2">
+                    <div class="admin-field">
+                        <label>Full Name</label>
+                        <input type="text" id="a-name" value="Md Labib Hossen">
+                    </div>
+                    <div class="admin-field">
+                        <label>Tagline / Role</label>
+                        <input type="text" id="a-tagline" value="Student & Web Developer | Photoshop Designer">
+                    </div>
+                    <div class="admin-field">
+                        <label>Class / Level</label>
+                        <input type="text" id="a-class" value="Class 11th (HSC)">
+                    </div>
+                    <div class="admin-field">
+                        <label>College Name</label>
+                        <input type="text" id="a-college" value="Rajbari Govt College">
+                    </div>
+                    <div class="admin-field">
+                        <label>Location</label>
+                        <input type="text" id="a-location" value="Rajbari, Dhaka, Bangladesh">
+                    </div>
+                    <div class="admin-field">
+                        <label>Status</label>
+                        <input type="text" id="a-status" value="Student & Developer">
+                    </div>
+                </div>
+                <div class="admin-field">
+                    <label>Hero Bio (Short Description)</label>
+                    <textarea id="a-bio">A passionate student and developer from Bangladesh 🇧🇩. Currently studying at Rajbari Govt College, I love building things on the web and creating stunning designs. Always learning, always growing.</textarea>
+                </div>
+                <div class="admin-grid-2">
+                    <div class="admin-field">
+                        <label>Stat 1 (e.g. 3+)</label>
+                        <input type="text" id="a-stat1" value="3+">
+                    </div>
+                    <div class="admin-field">
+                        <label>Stat 2 (e.g. 5+)</label>
+                        <input type="text" id="a-stat2" value="5+">
+                    </div>
+                    <div class="admin-field">
+                        <label>Stat 3 (e.g. 2+)</label>
+                        <input type="text" id="a-stat3" value="2+">
+                    </div>
+                </div>
+                <button class="save-btn" onclick="saveProfile()">💾 Save Profile</button>
+                <div class="save-success" id="profile-saved">✅ Profile saved successfully!</div>
+            </div>
+
+            <!-- PHOTO TAB -->
+            <div class="tab-content" id="tab-photo">
+                <div class="admin-section-title">Update Profile Photo</div>
+                <div class="photo-upload-area" id="uploadArea">
+                    <input type="file" accept="image/*" id="photoInput" onchange="handlePhotoUpload(event)">
+                    <img src="" alt="" class="photo-preview" id="photoPreview" style="display:none;">
+                    <i class="fas fa-cloud-upload-alt" id="uploadIcon"></i>
+                    <p id="uploadText">Click to upload your photo<br><small style="color:var(--text-dim)">JPG, PNG, WEBP supported</small></p>
+                </div>
+                <button class="save-btn" onclick="applyPhoto()" style="margin-top:1.5rem;">✅ Apply Photo to Website</button>
+                <div class="save-success" id="photo-saved">✅ Photo updated successfully!</div>
+                <p style="font-size:0.75rem;color:var(--text-dim);margin-top:1rem;">⚠️ Note: Photo will be applied immediately but will reset on page refresh unless stored properly.</p>
+            </div>
+
+            <!-- ABOUT TAB -->
+            <div class="tab-content" id="tab-about">
+                <div class="admin-section-title">About Section</div>
+                <div class="admin-field">
+                    <label>About Paragraph 1</label>
+                    <textarea id="a-para1">I am Md Labib Hossen, a dedicated student currently pursuing my HSC at Rajbari Govt College, located in Rajbari, Dhaka, Bangladesh. I have a strong passion for technology and creative design.</textarea>
+                </div>
+                <div class="admin-field">
+                    <label>About Paragraph 2</label>
+                    <textarea id="a-para2">As a self-taught developer, I work with Java, HTML, and CSS to build web projects and applications. I also have expertise in Photoshop Poster Design, creating eye-catching visual content.</textarea>
+                </div>
+                <div class="admin-field">
+                    <label>About Paragraph 3</label>
+                    <textarea id="a-para3">I believe in continuous learning and pushing boundaries. My goal is to become a full-stack developer and contribute meaningful projects to the tech community. 🚀</textarea>
+                </div>
+                <button class="save-btn" onclick="saveAbout()">💾 Save About Section</button>
+                <div class="save-success" id="about-saved">✅ About section saved!</div>
+            </div>
+
+            <!-- SKILLS TAB -->
+            <div class="tab-content" id="tab-skills">
+                <div class="admin-section-title">Programming Skills</div>
+                <div id="admin-prog-skills"></div>
+                <button class="add-btn" onclick="addProgSkill()">+ Add Skill</button>
+
+                <div class="admin-section-title" style="margin-top:2rem;">Design Skills</div>
+                <div id="admin-design-skills"></div>
+                <button class="add-btn" onclick="addDesignSkill()">+ Add Skill</button>
+
+                <button class="save-btn" onclick="saveSkills()">💾 Save All Skills</button>
+                <div class="save-success" id="skills-saved">✅ Skills saved!</div>
+            </div>
+
+            <!-- CONTACT TAB -->
+            <div class="tab-content" id="tab-contact">
+                <div class="admin-section-title">Contact Information</div>
+                <div class="admin-grid-2">
+                    <div class="admin-field">
+                        <label>Email Address</label>
+                        <input type="email" id="a-email" value="labibhossen@example.com">
+                    </div>
+                    <div class="admin-field">
+                        <label>Phone Number</label>
+                        <input type="text" id="a-phone" value="+880 1XXXXXXXXX">
+                    </div>
+                    <div class="admin-field">
+                        <label>Contact Location</label>
+                        <input type="text" id="a-clocation" value="Rajbari, Dhaka, Bangladesh">
+                    </div>
+                    <div class="admin-field">
+                        <label>Facebook Name</label>
+                        <input type="text" id="a-facebook" value="Md Labib Hossen">
+                    </div>
+                </div>
+                <button class="save-btn" onclick="saveContact()">💾 Save Contact Info</button>
+                <div class="save-success" id="contact-saved">✅ Contact info saved!</div>
+            </div>
+
+            <!-- PROJECTS TAB -->
+            <div class="tab-content" id="tab-projects">
+                <div class="admin-section-title">Manage Projects</div>
+                <div id="admin-projects-list"></div>
+                <button class="add-btn" onclick="addAdminProject()" style="margin-top:1rem;">+ Add New Project</button>
+                <button class="save-btn" onclick="saveProjects()">💾 Save Projects</button>
+                <div class="save-success" id="projects-saved">✅ Projects saved!</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // ===== DATA =====
+    let siteData = {
+        name: "Md Labib Hossen",
+        tagline: "Student & Web Developer | Photoshop Designer",
+        class: "Class 11th (HSC)",
+        college: "Rajbari Govt College",
+        location: "Rajbari, Dhaka, Bangladesh",
+        status: "Student & Developer",
+        bio: "A passionate student and developer from Bangladesh 🇧🇩. Currently studying at Rajbari Govt College, I love building things on the web and creating stunning designs. Always learning, always growing.",
+        stat1: "3+", stat2: "5+", stat3: "2+",
+        para1: "I am <strong style='color:var(--text)'>Md Labib Hossen</strong>, a dedicated student currently pursuing his HSC at Rajbari Govt College, located in Rajbari, Dhaka, Bangladesh. I have a strong passion for technology and creative design.",
+        para2: "As a self-taught developer, I work with <strong style='color:var(--text)'>Java, HTML, and CSS</strong> to build web projects and applications. I also have expertise in <strong style='color:var(--text)'>Photoshop Poster Design</strong>, creating eye-catching visual content.",
+        para3: "I believe in continuous learning and pushing boundaries. My goal is to become a full-stack developer and contribute meaningful projects to the tech community. 🚀",
+        email: "labibhossen@example.com",
+        phone: "+880 1XXXXXXXXX",
+        clocation: "Rajbari, Dhaka, Bangladesh",
+        facebook: "Md Labib Hossen",
+        photo: null,
+        progSkills: [
+            { name: "Java", pct: 75 },
+            { name: "HTML5", pct: 90 },
+            { name: "CSS3", pct: 85 }
+        ],
+        designSkills: [
+            { name: "Photoshop", pct: 80 },
+            { name: "Poster Design", pct: 85 },
+            { name: "UI/UX Basics", pct: 65 }
+        ],
+        projects: [
+            { name: "Personal Portfolio Website", desc: "A fully responsive personal portfolio website built with HTML, CSS and JavaScript.", emoji: "🌐", tags: "HTML, CSS, JavaScript", link:"" },
+            { name: "Poster Design Collection", desc: "Creative poster designs using Adobe Photoshop for events and social media.", emoji: "🎨", tags: "Photoshop, Design" },
+            { name: "Java Console Application", desc: "Java-based console application for student management with OOP principles.", emoji: "☕", tags: "Java, OOP" }
+        ]
+    };
+
+    // Load from localStorage
+    const stored = localStorage.getItem('labibSiteData');
+    if (stored) {
+        try { siteData = JSON.parse(stored); } catch(e) {}
+    }
+
+    // ===== PARTICLES =====
+    function createParticles() {
+        const container = document.getElementById('particles');
+        for (let i = 0; i < 40; i++) {
+            const p = document.createElement('div');
+            p.className = 'particle';
+            p.style.cssText = `
+                left: ${Math.random() * 100}%;
+                width: ${Math.random() * 4 + 1}px;
+                height: ${Math.random() * 4 + 1}px;
+                animation-duration: ${Math.random() * 15 + 10}s;
+                animation-delay: ${Math.random() * 15}s;
+                opacity: ${Math.random() * 0.6 + 0.2};
+                background: ${Math.random() > 0.5 ? 'rgba(233,69,96,0.5)' : 'rgba(240,165,0,0.4)'};
+            `;
+            container.appendChild(p);
+        }
+    }
+    createParticles();
+
+    // ===== TYPING EFFECT =====
+    const phrases = ["Student & Developer", "Web Designer", "Photoshop Artist", "Java Programmer", "Tech Enthusiast"];
+    let phraseIdx = 0, charIdx = 0, deleting = false;
+
+    function type() {
+        const el = document.getElementById('typed-text');
+        const curr = phrases[phraseIdx];
+        if (deleting) {
+            el.textContent = curr.slice(0, --charIdx);
+            if (charIdx === 0) { deleting = false; phraseIdx = (phraseIdx+1) % phrases.length; setTimeout(type, 500); return; }
+            setTimeout(type, 60);
+        } else {
+            el.textContent = curr.slice(0, ++charIdx);
+            if (charIdx === curr.length) { deleting = true; setTimeout(type, 2000); return; }
+            setTimeout(type, 100);
+        }
+    }
+    setTimeout(type, 500);
+
+    // ===== SKILL BARS ANIMATION =====
+    function animateSkills() {
+        const fills = document.querySelectorAll('.skill-fill');
+        fills.forEach(fill => {
+            const target = fill.getAttribute('data-width');
+            fill.style.width = target + '%';
+        });
+    }
+
+    const skillsObserver = new IntersectionObserver((entries) => {
+        entries.forEach(e => { if (e.isIntersecting) animateSkills(); });
+    }, { threshold: 0.3 });
+
+    const skillsSection = document.getElementById('skills');
+    if (skillsSection) skillsObserver.observe(skillsSection);
+
+    // ===== MOBILE NAV =====
+    function toggleMobile() {
+        const menu = document.getElementById('mobileMenu');
+        menu.classList.toggle('open');
+    }
+    function closeMobile() {
+        document.getElementById('mobileMenu').classList.remove('open');
+    }
+
+    // ===== RENDER SITE DATA =====
+    function renderSite() {
+        document.getElementById('hero-name').textContent = siteData.name;
+        document.getElementById('hero-bio').textContent = siteData.bio;
+        document.getElementById('about-name').textContent = siteData.name;
+        document.getElementById('about-class').textContent = siteData.class;
+        document.getElementById('about-college').textContent = siteData.college;
+        document.getElementById('about-location').textContent = siteData.location;
+        document.getElementById('about-email').textContent = siteData.email;
+        document.getElementById('about-status').textContent = siteData.status;
+        document.getElementById('about-para1').innerHTML = siteData.para1;
+        document.getElementById('about-para2').innerHTML = siteData.para2;
+        document.getElementById('about-para3').innerHTML = siteData.para3;
+        document.getElementById('stat1').textContent = siteData.stat1;
+        document.getElementById('stat2').textContent = siteData.stat2;
+        document.getElementById('stat3').textContent = siteData.stat3;
+        document.getElementById('contact-location').textContent = siteData.clocation;
+        document.getElementById('contact-email').textContent = siteData.email;
+        document.getElementById('contact-phone').textContent = siteData.phone;
+        document.getElementById('contact-facebook').textContent = siteData.facebook;
+
+        // Photo
+        if (siteData.photo) {
+            document.getElementById('hero-photo').src = siteData.photo;
+            document.getElementById('hero-photo').style.display = 'block';
+            document.getElementById('hero-placeholder').style.display = 'none';
+        }
+
+        // Skills
+        renderSkillBars();
+        renderProjects();
+    }
+
+    function renderSkillBars() {
+        const progContainer = document.getElementById('prog-skills');
+        progContainer.innerHTML = siteData.progSkills.map(s => `
+            <div class="skill-item">
+                <div class="skill-info">
+                    <span class="skill-name">${s.name}</span>
+                    <span class="skill-percent">${s.pct}%</span>
+                </div>
+                <div class="skill-bar"><div class="skill-fill" data-width="${s.pct}" style="width:${s.pct}%"></div></div>
+            </div>
+        `).join('');
+
+        const designContainer = document.getElementById('design-skills');
+        designContainer.innerHTML = siteData.designSkills.map(s => `
+            <div class="skill-item">
+                <div class="skill-info">
+                    <span class="skill-name">${s.name}</span>
+                    <span class="skill-percent">${s.pct}%</span>
+                </div>
+                <div class="skill-bar"><div class="skill-fill" data-width="${s.pct}" style="width:${s.pct}%"></div></div>
+            </div>
+        `).join('');
+    }
+
+    function renderProjects() {
+        const grid = document.getElementById('projects-grid');
+        grid.innerHTML = siteData.projects.map(p => `
+            <div class="project-card">
+                <div class="project-img" style="font-size:3rem;">${p.link ? `<iframe src="${p.link}" style="width:100%;height:100%;border:0;background:#fff;"></iframe>` : (p.emoji || '💡')}</div>
+                <div class="project-info">
+                    <h3>${p.name}</h3>
+                    <p>${p.desc}</p>
+                    <div class="project-tags">
+                        ${p.tags.split(',').map(t => `<span class="tag">${t.trim()}</span>`).join('')}
+                    </div>
+                    ${p.link ? `<div style="margin-top:12px;"><a href="${p.link}" target="_blank" style="display:inline-block;padding:10px 18px;background:linear-gradient(135deg,#e94560,#f0a500);color:#fff;text-decoration:none;border-radius:20px;font-weight:600;">🔗 Preview</a></div>` : ''}
+                </div>
+            </div>
+        `).join('');
+    }
+
+    // ===== CONTACT FORM =====
+    function sendMessage() {
+        const name = document.getElementById('c-name').value.trim();
+        const email = document.getElementById('c-email').value.trim();
+        const msg = document.getElementById('c-message').value.trim();
+        const msgEl = document.getElementById('contact-msg');
+
+        if (!name || !email || !msg) {
+            msgEl.className = 'form-message error';
+            msgEl.textContent = '❌ Please fill in all required fields!';
+            return;
+        }
+
+        msgEl.className = 'form-message success';
+        msgEl.textContent = '✅ Message sent! Labib will get back to you soon.';
+        document.getElementById('c-name').value = '';
+        document.getElementById('c-email').value = '';
+        document.getElementById('c-subject').value = '';
+        document.getElementById('c-message').value = '';
+        setTimeout(() => { msgEl.style.display = 'none'; }, 5000);
+    }
+
+    // ===== ADMIN PANEL =====
+    let adminLoggedIn = false;
+
+    function openAdmin() {
+        document.getElementById('adminOverlay').classList.add('open');
+        if (!adminLoggedIn) {
+            document.getElementById('adminLogin').style.display = 'block';
+            document.getElementById('adminDashboard').classList.remove('active');
+            document.getElementById('logoutBtn').style.display = 'none';
+        }
+    }
+
+    function closeAdmin() {
+        document.getElementById('adminOverlay').classList.remove('open');
+    }
+
+    function closeAdminOnBg(e) {
+        if (e.target === document.getElementById('adminOverlay')) closeAdmin();
+    }
+
+    function loginAdmin() {
+        const user = document.getElementById('admin-user').value;
+        const pass = document.getElementById('admin-pass').value;
+
+        if (user === 'admin' && pass === 'labib2026') {
+            adminLoggedIn = true;
+            document.getElementById('adminLogin').style.display = 'none';
+            document.getElementById('adminDashboard').classList.add('active');
+            document.getElementById('logoutBtn').style.display = 'inline-block';
+            document.getElementById('loginError').style.display = 'none';
+            loadAdminData();
+        } else {
+            document.getElementById('loginError').style.display = 'block';
+            document.getElementById('admin-pass').value = '';
+        }
+    }
+
+    function logout() {
+        adminLoggedIn = false;
+        document.getElementById('adminLogin').style.display = 'block';
+        document.getElementById('adminDashboard').classList.remove('active');
+        document.getElementById('logoutBtn').style.display = 'none';
+        document.getElementById('admin-user').value = '';
+        document.getElementById('admin-pass').value = '';
+    }
+
+    function switchTab(tabId, btn) {
+        document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+        document.querySelectorAll('.admin-tab').forEach(b => b.classList.remove('active'));
+        document.getElementById(tabId).classList.add('active');
+        btn.classList.add('active');
+        if (tabId === 'tab-skills') renderAdminSkills();
+        if (tabId === 'tab-projects') renderAdminProjects();
+    }
+
+    function loadAdminData() {
+        document.getElementById('a-name').value = siteData.name;
+        document.getElementById('a-tagline').value = siteData.tagline;
+        document.getElementById('a-class').value = siteData.class;
+        document.getElementById('a-college').value = siteData.college;
+        document.getElementById('a-location').value = siteData.location;
+        document.getElementById('a-status').value = siteData.status;
+        document.getElementById('a-bio').value = siteData.bio;
+        document.getElementById('a-stat1').value = siteData.stat1;
+        document.getElementById('a-stat2').value = siteData.stat2;
+        document.getElementById('a-stat3').value = siteData.stat3;
+        document.getElementById('a-para1').value = siteData.para1;
+        document.getElementById('a-para2').value = siteData.para2;
+        document.getElementById('a-para3').value = siteData.para3;
+        document.getElementById('a-email').value = siteData.email;
+        document.getElementById('a-phone').value = siteData.phone;
+        document.getElementById('a-clocation').value = siteData.clocation;
+        document.getElementById('a-facebook').value = siteData.facebook;
+
+        if (siteData.photo) {
+            document.getElementById('photoPreview').src = siteData.photo;
+            document.getElementById('photoPreview').style.display = 'block';
+            document.getElementById('uploadIcon').style.display = 'none';
+            document.getElementById('uploadText').textContent = 'Click to change photo';
+        }
+    }
+
+    function saveProfile() {
+        siteData.name = document.getElementById('a-name').value;
+        siteData.tagline = document.getElementById('a-tagline').value;
+        siteData.class = document.getElementById('a-class').value;
+        siteData.college = document.getElementById('a-college').value;
+        siteData.location = document.getElementById('a-location').value;
+        siteData.status = document.getElementById('a-status').value;
+        siteData.bio = document.getElementById('a-bio').value;
+        siteData.stat1 = document.getElementById('a-stat1').value;
+        siteData.stat2 = document.getElementById('a-stat2').value;
+        siteData.stat3 = document.getElementById('a-stat3').value;
+        saveToStorage();
+        renderSite();
+        showSuccess('profile-saved');
+    }
+
+    function saveAbout() {
+        siteData.para1 = document.getElementById('a-para1').value;
+        siteData.para2 = document.getElementById('a-para2').value;
+        siteData.para3 = document.getElementById('a-para3').value;
+        saveToStorage();
+        renderSite();
+        showSuccess('about-saved');
+    }
+
+    function saveContact() {
+        siteData.email = document.getElementById('a-email').value;
+        siteData.phone = document.getElementById('a-phone').value;
+        siteData.clocation = document.getElementById('a-clocation').value;
+        siteData.facebook = document.getElementById('a-facebook').value;
+        saveToStorage();
+        renderSite();
+        showSuccess('contact-saved');
+    }
+
+    // Skills admin
+    function renderAdminSkills() {
+        const pc = document.getElementById('admin-prog-skills');
+        pc.innerHTML = siteData.progSkills.map((s, i) => skillAdminItem(s, i, 'prog')).join('');
+        const dc = document.getElementById('admin-design-skills');
+        dc.innerHTML = siteData.designSkills.map((s, i) => skillAdminItem(s, i, 'design')).join('');
+        bindRangeInputs();
+    }
+
+    function skillAdminItem(s, i, type) {
+        return `
+            <div class="skill-admin-item" id="skill-${type}-${i}">
+                <input type="text" value="${s.name}" oninput="updateSkill('${type}', ${i}, 'name', this.value)" placeholder="Skill name">
+                <input type="range" min="0" max="100" value="${s.pct}" oninput="updateSkillPct('${type}', ${i}, this.value)">
+                <span class="pct" id="pct-${type}-${i}">${s.pct}%</span>
+                <button class="del-btn" onclick="deleteSkill('${type}', ${i})">✕</button>
+            </div>
+        `;
+    }
+
+    function bindRangeInputs() {}
+
+    function updateSkill(type, i, key, val) {
+        if (type === 'prog') siteData.progSkills[i][key] = val;
+        else siteData.designSkills[i][key] = val;
+    }
+
+    function updateSkillPct(type, i, val) {
+        if (type === 'prog') siteData.progSkills[i].pct = parseInt(val);
+        else siteData.designSkills[i].pct = parseInt(val);
+        document.getElementById(`pct-${type}-${i}`).textContent = val + '%';
+    }
+
+    function deleteSkill(type, i) {
+        if (type === 'prog') siteData.progSkills.splice(i, 1);
+        else siteData.designSkills.splice(i, 1);
+        renderAdminSkills();
+    }
+
+    function addProgSkill() {
+        siteData.progSkills.push({ name: "New Skill", pct: 50 });
+        renderAdminSkills();
+    }
+
+    function addDesignSkill() {
+        siteData.designSkills.push({ name: "New Skill", pct: 50 });
+        renderAdminSkills();
+    }
+
+    function saveSkills() {
+        saveToStorage();
+        renderSite();
+        showSuccess('skills-saved');
+    }
+
+    // Projects admin
+    function renderAdminProjects() {
+        const list = document.getElementById('admin-projects-list');
+        list.innerHTML = siteData.projects.map((p, i) => `
+            <div style="background:var(--card-bg);border:1px solid var(--border);border-radius:12px;padding:1.2rem;margin-bottom:1rem;">
+                <div class="admin-grid-2">
+                    <div class="admin-field">
+                        <label>Project Name</label>
+                        <input type="text" value="${p.name}" onchange="siteData.projects[${i}].name=this.value">
+                    </div>
+                    <div class="admin-field">
+                        <label>Emoji Icon</label>
+                        <input type="text" value="${p.emoji}" onchange="siteData.projects[${i}].emoji=this.value" style="text-align:center;font-size:1.5rem;">
+                    </div>
+                </div>
+                <div class="admin-field">
+                    <label>Description</label>
+                    <textarea onchange="siteData.projects[${i}].desc=this.value">${p.desc}</textarea>
+                </div>
+                <div class="admin-field">
+                    <label>Tags (comma separated)</label>
+                    <input type="text" value="${p.tags}" onchange="siteData.projects[${i}].tags=this.value">
+                </div>
+                <div class="admin-field">
+                    <label>Website Link (Preview URL)</label>
+                    <input type="text" value="${p.link || ''}" onchange="siteData.projects[${i}].link=this.value" placeholder="https://example.com">
+                </div>
+                <button class="del-btn" style="width:auto;padding:5px 12px;border-radius:6px;font-size:0.75rem;" onclick="deleteProject(${i})">✕ Remove</button>
+            </div>
+        `).join('');
+    }
+
+    function deleteProject(i) {
+        if (confirm('Delete this project?')) {
+            siteData.projects.splice(i, 1);
+            renderAdminProjects();
+        }
+    }
+
+    function addAdminProject() {
+        siteData.projects.push({ name: "New Project", desc: "Project description here.", emoji: "💡", tags: "HTML, CSS", link:"" });
+        renderAdminProjects();
+    }
+
+    function saveProjects() {
+        saveToStorage();
+        renderProjects();
+        showSuccess('projects-saved');
+    }
+
+    // Photo
+    let pendingPhoto = null;
+
+    function handlePhotoUpload(e) {
+        const file = e.target.files[0];
+        if (!file) return;
+        const reader = new FileReader();
+        reader.onload = function(ev) {
+            pendingPhoto = ev.target.result;
+            document.getElementById('photoPreview').src = ev.target.result;
+            document.getElementById('photoPreview').style.display = 'block';
+            document.getElementById('uploadIcon').style.display = 'none';
+            document.getElementById('uploadText').textContent = 'Photo ready. Click "Apply Photo" below.';
+        };
+        reader.readAsDataURL(file);
+    }
+
+    function applyPhoto() {
+        if (!pendingPhoto) {
+            alert('Please select a photo first!');
+            return;
+        }
+        siteData.photo = pendingPhoto;
+        saveToStorage();
+        document.getElementById('hero-photo').src = pendingPhoto;
+        document.getElementById('hero-photo').style.display = 'block';
+        document.getElementById('hero-placeholder').style.display = 'none';
+        showSuccess('photo-saved');
+    }
+
+    function saveToStorage() {
+        try { localStorage.setItem('labibSiteData', JSON.stringify(siteData)); } catch(e) {}
+    }
+
+    function showSuccess(id) {
+        const el = document.getElementById(id);
+        el.style.display = 'block';
+        setTimeout(() => { el.style.display = 'none'; }, 3000);
+    }
+
+    // ===== INIT =====
+    renderSite();
+
+    // Smooth scroll active nav
+    window.addEventListener('scroll', () => {
+        const sections = document.querySelectorAll('section');
+        const links = document.querySelectorAll('.nav-links a');
+        let current = '';
+        sections.forEach(s => {
+            if (window.scrollY >= s.offsetTop - 100) current = s.id;
+        });
+        links.forEach(a => {
+            a.style.color = '';
+            if (a.getAttribute('href') === '#'+current) a.style.color = '#e94560';
+        });
+    });
+</script>
+</body>
+</html>
